@@ -2,18 +2,173 @@ html {
   scroll-behavior: smooth;
 }
 
-.main-photo {
-    width: 400px;
-    height: 400px;
-    padding: 20px;
-}
-
 @keyframes shake {
   0% { transform: translateX(0); }
   25% { transform: translateX(-5px); }
   50% { transform: translateX(5px); }
   75% { transform: translateX(-5px); }
   100% { transform: translateX(0); }
+}
+
+#light-mode-btn:checked ~ .main-container {
+    background-color: white;
+    color: #0a0b0f;
+}
+
+.image-container{
+    position: relative;
+    width: 400px;
+    height: 400px;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 0.5s ease;
+}
+
+.main-photo {
+    z-index: 10;
+    opacity: 1;
+}
+
+.main-photo-hover {
+    z-index: 5;
+    opacity: 0;
+}
+
+.main-photo-light,
+.main-photo-hover-light {
+    display: none;
+    opacity: 0;
+}
+
+.image-container:hover .main-photo {
+    opacity: 0;
+}
+
+.image-container:hover .main-photo-hover {
+    opacity: 1;
+}
+
+#light-mode-btn:checked ~ .main-container .main-photo,
+#light-mode-btn:checked ~ .main-container .main-photo-hover {
+    display: none;
+}
+
+#light-mode-btn:checked ~ .main-container .main-photo-light,
+#light-mode-btn:checked ~ .main-container .main-photo-hover-light {
+    display: block;
+}
+
+#light-mode-btn:checked ~ .main-container .main-photo-light {
+    z-index: 10;
+    opacity: 1;
+}
+
+#light-mode-btn:checked ~ .main-container .main-photo-hover-light {
+    z-index: 5;
+    opacity: 0;
+}
+
+#light-mode-btn:checked ~ .main-container .image-container:hover .main-photo-light {
+    opacity: 0;
+}
+
+#light-mode-btn:checked ~ .main-container .image-container:hover .main-photo-hover-light {
+    opacity: 1;
+}
+
+#light-mode-btn {
+    display: none;
+}
+
+.toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 60px;
+    height: 30px;
+    background-color: #444;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.toggle::before {
+    content: "";
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    background-color: white;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s ease;
+}
+
+#light-mode-btn:checked + .toggle {
+    background-color: #444;
+}
+
+#light-mode-btn:checked + .toggle::before {
+    transform: translateX(30px);
+}
+
+#light-mode-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 25px;
+    cursor: pointer;
+}
+
+#light-mode-btn:checked ~ .main-container h1,
+#light-mode-btn:checked ~ .main-container h2,
+#light-mode-btn:checked ~ .main-container h3,
+#light-mode-btn:checked ~ .main-container h4,
+#light-mode-btn:checked ~ .main-container p {
+    color: #0a0b0f;
+}
+
+#light-mode-btn:checked ~ .main-container .main-photo,
+#light-mode-btn:checked ~ .main-container .main-photo-hover {
+    display: none;
+}
+
+#light-mode-btn:checked ~ .main-container .main-photo-light,
+#light-mode-btn:checked ~ .main-container .main-photo-hover-light {
+    display: block;
+}
+
+#light-mode-btn:checked ~ .main-container .left-card,
+#light-mode-btn:checked ~ .main-container .right-card div,
+#light-mode-btn:checked ~ .main-container .project-container,
+#light-mode-btn:checked ~ .main-container .grey-card {
+    background-color: #f5f5f5;
+    border-color: #ddd;
+}
+
+#light-mode-btn:checked ~ .main-container .btn1 {
+    background-color: white;
+    color: #0a0b0f;
+    border: 2px solid #0a0b0f;
+}
+
+#light-mode-btn:checked ~ .main-container .btn2 {
+    background-color: #0a0b0f;
+    color: white;
+}
+
+#light-mode-btn:checked ~ .main-container a {
+    color: #0a0b0f;
 }
 
 .back-to-top {
@@ -36,6 +191,9 @@ html {
 
 .main-container {
     background-color: #0a0b0f;
+    color: white;
+    transition: background-color 0.4s ease, color 0.4s ease;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -111,6 +269,16 @@ h1, h2, h3, h4, p{
     border-radius: 50px;
 }
 
+.btn1:hover {
+    background-color: #9195A0;
+    color: white;
+}
+
+.btn2:hover {
+    background-color: #9195A0;
+    color: white;
+}
+
 .details-container {
     display: flex;
     flex-direction: row;
@@ -127,7 +295,7 @@ h1, h2, h3, h4, p{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 30px 30px 30px 30px;
+    padding: 20px 30px 20px 30px;
     flex: 1;
     text-align: justify;
     max-width: 45%;
@@ -163,7 +331,9 @@ h1, h2, h3, h4, p{
     padding: 30px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 0px;
+    padding-bottom: 18px;
+    padding-top: 22px;
 }
 
 .right-card h1 {
@@ -204,7 +374,7 @@ h1, h2, h3, h4, p{
     gap: 10px;
     display: flex;
     flex-direction: column;
-    padding: 30px 180px 30px 60px;
+    padding: 30px 230px 30px 60px;
 }
 
 .project-container h1 {
@@ -228,7 +398,7 @@ h1, h2, h3, h4, p{
 .project-card h2{
     text-decoration: none;
     text-align: left;
-    font-size: 20px;
+    font-size: 17px;
     padding-top: 10px;
     margin: 5px 50px;
 }
@@ -249,8 +419,14 @@ h1, h2, h3, h4, p{
     padding-left: 56px;
 }
 
+.left-contact h2{
+    font-size: 23px;
+    margin: 0px 0px 15px 0px;
+}
+
 .left-contact h3{
     transition: transform 0.2s;
+    font-size: 17px;
 }
 
 .left-contact h3:hover {
@@ -275,6 +451,11 @@ h1, h2, h3, h4, p{
     padding: 30px;
 }
 
+.right-contact h2{
+    font-size: 23px;
+    margin: 0px 0px 15px 0px;
+}
+
 .social-media {
     display: grid;
     grid-template-columns: auto auto;
@@ -287,7 +468,7 @@ h1, h2, h3, h4, p{
 .social-media a {
     text-decoration: none;
     color: white;
-    font-size: 16px;
+    
     font-family: 'Poppins', sans-serif;
     transition: transform 0.2s;
 }
@@ -299,4 +480,5 @@ h1, h2, h3, h4, p{
 .social-media h3{
     padding-right: 45;
     text-align: left;
+    font-size: 17px;
 }
