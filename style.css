@@ -214,6 +214,11 @@ h1, h2, h3, h4, p{
     font-family: 'Poppins', sans-serif;
 }
 
+a {
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+}
+
 .content-container h1,
 .content-container h2,
 .content-container h3 {
