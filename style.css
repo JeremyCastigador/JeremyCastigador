@@ -332,10 +332,9 @@ a {
 /* ========================
    DETAILS (ABOUT + EDUCATION)
 ======================== */
-
 .details-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 4fr 2.5fr;
     justify-content: center;
     padding: 50px 40px 15px 40px;
     gap: 15px;
@@ -379,7 +378,7 @@ a {
 }
 
 /* ========================
-   CERTIFICATES
+   Certificates
 ======================== */
 
 .certificate-container h1 {
@@ -450,10 +449,6 @@ a {
     color: #0a0b0f;
 }
 
-/* ========================
-   RIGHT DETAILS
-======================== */
-
 .right-card {
     display: flex;
     flex-direction: column;
@@ -506,10 +501,11 @@ a {
     margin: 8px 0;
 }
 
+
+
 /* ========================
    PROJECTS
 ======================== */
-
 .project-container {
     padding: 10px 40px;
     max-width: 1200px;
@@ -594,6 +590,7 @@ a {
   transition: max-height 0.5s ease-out;
 }
 
+/* Toggle the button text */
 .text-less { display: none; }
 #expanded-btn:checked ~ .btn-left .more-btn .text-more { display: none; }
 #expanded-btn:checked ~ .btn-left .more-btn .text-less { display: none; }
@@ -604,6 +601,7 @@ a {
   margin-top: 20px;
 }
 
+/* Make grid consistent */
 .extra-items {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -652,9 +650,6 @@ a {
    justify-content: right;
 }
 
-/* ========================
-   GALLERY
-======================== */
 
 .gallery-container{
     background-color: #111111;
@@ -687,7 +682,7 @@ a {
 
 .gallery-grid img {
     width: 100%;
-    height: 120px;
+    height: 100px;
     object-fit: cover;
     border-radius: 20px;
     padding: 10px;
